@@ -143,7 +143,7 @@ static TokenType identifierType() {
             return checkKeyword(1, 4, "uper", TOKEN_SUPER);
         case 't':
             if (scanner.current - scanner.start > 1) {
-                switch (scanner.current[1]) {
+                switch (scanner.start[1]) {
                     case 'h':
                         return checkKeyword(2, 2, "is", TOKEN_THIS);
                     case 'r':
@@ -161,7 +161,7 @@ static TokenType identifierType() {
 }
 
 static Token identifier() {
-    while (isAlpha(peek()) && isDigit(peek())) advance();
+    while (isAlpha(peek()) || isDigit(peek())) advance();
     return makeToken(identifierType());
 }
 
