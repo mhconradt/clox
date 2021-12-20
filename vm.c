@@ -166,10 +166,12 @@ static InterpretResult run() {
 void initVM() {
     resetStack();
     vm.objects = NULL;
+    initTable(&vm.strings);
 }
 
 void freeVM() {
     freeObjects();
+    freeTable(&vm.strings);
 }
 
 InterpretResult interpret(const char *source) {
