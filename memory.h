@@ -6,6 +6,8 @@
 #define CLOX_MEMORY_H
 
 #include "common.h"
+#include "object.h"
+#include "value.h"
 
 #define ALLOCATE(type, count) \
     (type*)reallocate(NULL, 0, sizeof(type) * (count))
@@ -23,7 +25,9 @@
     reallocate(pointer, sizeof(type) * (oldCount), 0)
 
 void *reallocate(void *pointer, size_t oldSize, size_t newSize);
-
+void markObject(Obj* object);
+void markValue(Value value);
+void collectGarbage();
 void freeObjects();
 
 #endif //CLOX_MEMORY_H
