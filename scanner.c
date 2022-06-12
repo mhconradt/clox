@@ -2,7 +2,6 @@
 // Created by Maxwell Conradt on 12/11/21.
 //
 
-#include <stdio.h>
 #include <string.h>
 
 #include "common.h"

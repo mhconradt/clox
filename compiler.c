@@ -6,7 +6,6 @@
 #include <string.h>
 
 #include "common.h"
-#include "compiler.h"
 #include "object.h"
 #include "memory.h"
 #include "scanner.h"

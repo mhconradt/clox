@@ -243,7 +243,7 @@ void freeObjects() {
     Obj *object = vm.objects;
     while (object != NULL) {
         Obj *next = object->next; // can't access next after freeing
-        freeObjects(object);
+        freeObject(object);
         object = next;
     }
 

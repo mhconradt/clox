@@ -499,8 +499,8 @@ static InterpretResult run() {
                     runtimeError("Only instances have properties.");
                     return INTERPRET_RUNTIME_ERROR;
                 }
-                ObjInstance* instance = AS_INSTANCE(peek(0));
-                ObjString* name = READ_STRING();
+                ObjInstance *instance = AS_INSTANCE(peek(0));
+                ObjString *name = READ_STRING();
                 Value value;
                 if (tableGet(&instance->fields, name, &value)) {
                     pop(); // Instance
@@ -519,7 +519,7 @@ static InterpretResult run() {
                     return INTERPRET_RUNTIME_ERROR;
                 }
 
-                ObjInstance* instance = AS_INSTANCE(peek(1));
+                ObjInstance *instance = AS_INSTANCE(peek(1));
                 tableSet(&instance->fields, READ_STRING(), peek(0));
                 Value value = pop();
                 pop(); // Instance
@@ -544,6 +544,9 @@ static InterpretResult run() {
             case OP_METHOD:
                 defineMethod(READ_STRING());
                 break;
+            default:
+                runtimeError("Bad op code.");
+                return INTERPRET_RUNTIME_ERROR;
         }
     }
 #undef READ_BYTE

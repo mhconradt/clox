@@ -108,7 +108,7 @@ ObjClosure *newClosure(ObjFunction *function);
 
 ObjFunction *newFunction();
 
-ObjInstance *newInstance();
+ObjInstance *newInstance(ObjClass* klass);
 
 ObjNative *newNative(NativeFn function);
 
